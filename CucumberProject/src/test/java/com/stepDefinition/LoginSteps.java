@@ -28,13 +28,12 @@ public class LoginSteps {
 		driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(10));
 	}
 
-	@When("user enters username and password")
-	public void user_enters_username_and_password() {
+	@When("^user enters (.*) and (.*)$")
+	public void user_enters_username_and_password(String uname, String pwd) {
 		System.out.println("Step2: Enter username and password");
 		driver.findElement(By.xpath("//input[@name='username']")).isDisplayed();
-	   driver.findElement(By.xpath("//input[@name='username']")).sendKeys("Admin");
-	   driver.findElement(By.xpath("//input[@name='password']")).sendKeys("admin123");
-	   
+	   driver.findElement(By.xpath("//input[@name='username']")).sendKeys(uname);
+	   driver.findElement(By.xpath("//input[@name='password']")).sendKeys(pwd);
 	}
 
 	@When("user clciks on login button")
